@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "PayTrack.Infrastructure/1.0.0": {
+        "dependencies": {
+          "PayTrack.Application": "1.0.0",
+          "PayTrack.Domain": "1.0.0"
+        },
+        "runtime": {
+          "PayTrack.Infrastructure.dll": {}
+        }
+      },
+      "PayTrack.Application/1.0.0": {
+        "dependencies": {
+          "PayTrack.Domain": "1.0.0"
+        },
+        "runtime": {
+          "PayTrack.Application.dll": {}
+        }
+      },
+      "PayTrack.Domain/1.0.0": {
+        "runtime": {
+          "PayTrack.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PayTrack.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PayTrack.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PayTrack.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
