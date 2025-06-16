@@ -21,10 +21,15 @@ The project follows a Clean Architecture-inspired layered structure:
 
 
 PayTrack
+
 PayTrack.API             --> API controllers and configuration
+
 PayTrack.Application     --> DTOs, interfaces, AutoMapper profiles
+
 PayTrack.Domain          --> Entity models, enums, interfaces
+
 PayTrack.Infrastructure  --> EF DbContext and repository implementations
+
 PayTrack.Tests           --> Unit tests using xUnit and Moq
 
 ## Technologies Used
