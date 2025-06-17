@@ -1,19 +1,25 @@
-## PayTrack
-This project was developed as part of a code challenge. Project is named as PayTrack.
+# PayTrack
 
-PayTrack is a simple transaction management API designed to store user and transaction data in a relational database and provide efficient in-memory summarization of transaction records.
+This project was developed as part of a code challenge. The project is named **PayTrack**.
 
+**PayTrack** is a simple transaction management API designed to store user and transaction data in a relational database and provide efficient in-memory summarization of transaction records.
 
-## Objective was to demonstrate;
-- SQL database integration
-- Clean and layered architecture
-- Efficient in-memory data processing
-- AutoMapper and DTO usage
-- EF Core and repository patterns
-- SOLID principles
-- Unit test samples
+---
+
+## Objective
+
+The objective was to demonstrate:
+
+- SQL database integration  
+- Clean and layered architecture  
+- Efficient in-memory data processing  
+- AutoMapper and DTO usage  
+- EF Core and repository patterns  
+- SOLID principles  
+- Unit test samples  
 - Swagger-based API documentation
 
+---
 
 ## Architecture
 
@@ -50,14 +56,15 @@ Before applying migrations and running the project:
    - "PayTrack.Infrastructure/PayTrackDbContextFactory.cs"
    - "PayTrack.API/appsettings.json"
 
-Example connection string:
-
+**Example Connection String**
+```csharp
 "Server=localhost\\SQLEXPRESS;Database=PayTrackDb;Trusted_Connection=True;TrustServerCertificate=True;"
+```
 
 2. Run migration and apply to database using command below
-
+```shell
 dotnet ef database update --project PayTrack.Infrastructure --startup-project PayTrack.API
-
+```
 
 
 ## Challenge Notes
