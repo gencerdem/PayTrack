@@ -12,9 +12,9 @@ namespace PayTrack.Application.Interfaces
         Task<List<TransactionDTO>> GetAllAsync();
         Task<TransactionDTO> GetByIdAsync(int id);
         Task<TransactionDTO> CreateAsync(CreateTransactionDTO dto);
-        Task<List<TransactionDTO>> GetByUserIdAsync(string userId);
+        Task<List<TransactionDTO>> GetByUserIdAsync(int userId);
 
-        Task<Dictionary<string, decimal>> GetTotalAmountPerUserAsync();
+        Task<Dictionary<int, decimal>> GetTotalAmountPerUserAsync();
         Task<Dictionary<string, decimal>> GetTotalAmountPerTypeAsync();
         Task<List<TransactionDTO>> GetAboveThresholdAsync(decimal threshold);
     }

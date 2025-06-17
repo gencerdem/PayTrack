@@ -10,9 +10,9 @@ namespace PayTrack.Application.Interfaces
     public interface IUserService
     {
         Task<List<UserDTO>> GetAllUsersAsync();
-        Task<UserDTO> GetByIdAsync(string id);
+        Task<UserDTO> GetByIdAsync(int id);
         Task<UserDTO> CreateAsync(CreateUserDTO user);
         Task<UserDTO> UpdateAsync(UserDTO user);
-        Task DeleteAsync(string id);
+        Task DeleteAsync(int id);
     }
 }

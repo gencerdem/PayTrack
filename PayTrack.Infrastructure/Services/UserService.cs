@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using PayTrack.Application;
 using PayTrack.Application.DTOs;
 using PayTrack.Application.Interfaces;
 using PayTrack.Domain.Entities;
@@ -24,14 +25,14 @@ namespace PayTrack.Infrastructure.Services
 
         public async Task<List<UserDTO>> GetAllUsersAsync()
         {
-            var users = await _userRepository.GetAllAsync();
+            var users = await _userRepository.GetAllAsync(x=>x.IsActive);
             return _mapper.Map<List<UserDTO>>(users);
         }
 
-        public async Task<UserDTO> GetByIdAsync(string id)
+        public async Task<UserDTO> GetByIdAsync(int id)
         {
             var user = await _userRepository.GetByIdAsync(id);
-            return _mapper.Map<UserDTO>(user);
+            return _mapper.Map<UserDTO>(user is not null && user.IsActive ? user : null);
         }
 
         public async Task<UserDTO> CreateAsync(CreateUserDTO userDto)
@@ -44,18 +45,29 @@ namespace PayTrack.Infrastructure.Services
 
         public async Task<UserDTO> UpdateAsync(UserDTO userDto)
         {
-            var user = _mapper.Map<User>(userDto);
-            _userRepository.Update(user);
+            var existingUser = await _userRepository.GetByIdAsync(userDto.Id);
+            if (existingUser is null || existingUser.IsActive == false) 
+                throw new CustomException("User not found."); 
+            
+
+            _mapper.Map(userDto, existingUser); 
+
+            _userRepository.Update(existingUser);
             await _userRepository.SaveChangesAsync();
-            return _mapper.Map<UserDTO>(user);
+
+            return _mapper.Map<UserDTO>(existingUser);
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(int id)
         {
             var user = await _userRepository.GetByIdAsync(id);
+            if (user is null || user.IsActive == false)
+                throw new CustomException("User not found.");
+
             if (user != null)
             {
-                _userRepository.Delete(user);
+                user.IsActive = false;
+                _userRepository.Update(user);
                 await _userRepository.SaveChangesAsync();
             }
         }
